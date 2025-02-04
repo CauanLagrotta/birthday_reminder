@@ -11,19 +11,22 @@ datasource db {
 }
 
 model Users {
-  id       String @id @default(uuid())
-  name     String @unique
-  email    String @unique
-  password String
+  id        String      @id @default(uuid())
+  name      String      @unique
+  email     String      @unique
+  password  String
   birthdays Birthdays[]
 
   @@map("users")
 }
 
 model Birthdays {
-  id      Int @id @default(autoincrement())
-  name    String
-  date    DateTime
-  user    Users @relation(fields: [userId], references: [id])
-  userId  String
+  id              Int      @id @default(autoincrement())
+  birthday_person String
+  day             Int
+  month           Int
+  user            Users    @relation(fields: [userId], references: [id])
+  userId          String
+
+  @@map("birthdays")
 }
