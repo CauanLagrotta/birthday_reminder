@@ -6,8 +6,8 @@
 
 [] - Create reminder controller
     [o] - Create birthday to remember
-    [] - See registered birthdays
-    [] - Edit registered birthdays
+    [o] - See registered birthdays
+    [o] - Edit registered birthdays
     [] - Delete registered birthdays
 
 [] - Create Auth system
