@@ -5,7 +5,7 @@
     [o] - Delete user
 
 [] - Create reminder controller
-    [] - Create birthday to remember
+    [o] - Create birthday to remember
     [] - See registered birthdays
     [] - Edit registered birthdays
     [] - Delete registered birthdays
