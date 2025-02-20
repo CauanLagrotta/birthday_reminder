@@ -10,9 +10,10 @@
     [o] - Edit registered birthdays
     [o] - Delete registered birthdays
 
-[] - Create send mail system
-    [] - Send email to correct birthday
-    [] - Get today birthdays
+[x] - Create send mail system
+    [o] - Send email to correct birthday
+    [o] - Get today birthdays
+    [o] - Add nodecron to do send mail
 
 [] - Create Auth system
     [] - Create Register

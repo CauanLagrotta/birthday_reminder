@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { main_routes } from './routes/main.routes'
+import "./jobs/schedule"
 
 const app = express()
 
