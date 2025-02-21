@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { getTodayBirthdayService } from "../../services/mail/today_birthday.service";
+import { getTodayBirthdayService } from "../../services/mail_reminder/today_birthday.service";
 
 export const getTodayBirthdayController: RequestHandler = async (req, res) => {
     try {

@@ -6,7 +6,8 @@ import { deleteUserController } from "../controllers/user/delete_user.controller
 
 export const user_routes = Router()
 
-user_routes.post("/", createUserController)
-user_routes.get("/", seeUserController)
-user_routes.put("/:id", editUserController)
-user_routes.delete("/:id", deleteUserController)
+user_routes.post("/", createUserController) // http://localhost:3000/users
+user_routes.get("/", seeUserController) // http://localhost:3000/users
+user_routes.get("/:id", seeUserController) // http://localhost:3000/users/:id
+user_routes.put("/:id", editUserController) // http://localhost:3000/users/:id
+user_routes.delete("/:id", deleteUserController) // http://localhost:3000/users/:id

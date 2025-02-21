@@ -6,7 +6,7 @@ import path from "path";
 
 dotenv.config();
 
-export const mailTransporterService = async () => {
+export const mailReminderTransporterService = async () => {
   const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 
   const model = genAI.getGenerativeModel({

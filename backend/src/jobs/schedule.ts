@@ -1,5 +1,5 @@
 import cron from "node-cron";
-import { mailTransporterService } from "../services/mail/mail_transporter.service";
+import { mailTransporterService } from "../services/mail_reminder/mail_transporter.service";
 
 // Schedule a job to run every day at 08:00 AM
 cron.schedule(

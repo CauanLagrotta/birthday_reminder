@@ -1,9 +1,9 @@
 import { RequestHandler } from "express";
-import { mailTransporterService } from "../../services/mail/mail_transporter.service";
+import { mailReminderTransporterService } from "../../services/mail_reminder/mail_transporter.service";
 
-export const mailTransporterController: RequestHandler = async (req, res) => {
+export const mailReminderTransporterController: RequestHandler = async (req, res) => {
     try {
-        const mail = await mailTransporterService();
+        const mail = await mailReminderTransporterService();
         res.status(200).json(mail);
     } catch (error) {
         if (error instanceof Error) {
