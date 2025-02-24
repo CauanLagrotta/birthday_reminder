@@ -15,8 +15,12 @@
     [o] - Get today birthdays
     [o] - Add nodecron to do send mail
 
-[] - Create Auth system
-    [] - Create Register
-    [] - Create Login
-    [] - Create Logout
-    [] - Create forgot/reset password
+[x] - Create Auth system
+    [o] - Create Register
+    [o] - Create Login
+    [o] - Create Logout
+    [o] - Create forgot/reset password
+
+[] - Create I'm not robot system
+    [] - Create a filter with gemini
+    

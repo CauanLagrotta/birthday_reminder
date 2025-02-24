@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { mailReminderTransporterService } from "../../services/mail_reminder/mail_transporter.service";
+import { mailReminderTransporterService } from "../../services/mail_reminder/mail_reminder_transporter.service";
 
 export const mailReminderTransporterController: RequestHandler = async (req, res) => {
     try {
