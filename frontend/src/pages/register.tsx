@@ -1,7 +1,7 @@
 import { api } from "../api";
 import registerIllustration from "/assets/register_illustration.svg";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import * as Yup from "yup";
 import { Formik, Form, Field } from "formik";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -65,7 +65,6 @@ export function Register() {
         toast.error(errorMsg, {
           position: "bottom-left",
         });
-        console.log(error);
       });
   };
 
@@ -75,13 +74,13 @@ export function Register() {
         <img
           className="w-full h-full object-cover sm:w-full"
           src={registerIllustration}
-          alt="Imagem da tela de login"
+          alt="Imagem da tela de registro"
         />
       </div>
 
       <div className="w-[90%] sm:w-[50%] max-w-3xl flex flex-col justify-center items-center bg-[#f2f2f2] p-8">
         <div className="w-full px-6 flex flex-col items-center justify-center">
-          <h1 className="text-3xl text-blue-500 mb-6">Register</h1>
+          <h1 className="text-3xl text-blue-500 mb-6">Registrar-se</h1>
 
           <Formik
             initialValues={{
@@ -147,15 +146,9 @@ export function Register() {
                     >
                       Senha
                     </label>
-                    <button
-                      type="button"
-                      onClick={togglePasswordVisibility}
-                      className="text-sm"
-                    >
-                      {React.createElement(
-                        showPassword ? VisibilityOff : Visibility
-                      )}
-                    </button>
+                    <div className="cursor-pointer" onClick={togglePasswordVisibility}>
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </div>
                   </div>
                   <Field
                     type={showPassword ? "text" : "password"}
@@ -182,15 +175,9 @@ export function Register() {
                     >
                       Confirme a Senha
                     </label>
-                    <button
-                      type="button"
-                      onClick={toggleConfirmPasswordVisibility}
-                      className="text-sm"
-                    >
-                      {React.createElement(
-                        showConfirmPassword ? VisibilityOff : Visibility
-                      )}
-                    </button>
+                    <div className="cursor-pointer" onClick={toggleConfirmPasswordVisibility}>
+                      {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                    </div>
                   </div>
                   <Field
                     type={showConfirmPassword ? "text" : "password"}

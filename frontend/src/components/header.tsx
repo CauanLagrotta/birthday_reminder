@@ -11,14 +11,19 @@ interface NavLinkProps {
 export function Header() {
   return (
     <div className="flex justify-between items-center p-4 bg-[#fff]">
-      <img src={logo} alt="logo" className="w-[80px] h-auto" />
+      <Link to="/home">
+        <img src={logo} alt="logo" className="w-[80px] h-auto" />
+      </Link>
 
       <div className="flex items-center gap-6">
         <NavLink to="/home">Início</NavLink>
         <NavLink to="/about">Sobre | Como usar</NavLink>
         <NavLink to="/login">Login</NavLink>
         <NavLink to="/register">Registrar-se</NavLink>
-        <AccountCircleIcon sx={{ fontSize: 30 }} className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer" />
+        <AccountCircleIcon
+          sx={{ fontSize: 30 }}
+          className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer"
+        />
       </div>
     </div>
   );

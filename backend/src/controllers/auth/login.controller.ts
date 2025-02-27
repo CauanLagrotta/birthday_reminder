@@ -21,8 +21,8 @@ export const loginController: RequestHandler = async (req, res) => {
   } catch (error) {
     if (error instanceof Error) {
       if (
-        error.message === "User not found" ||
-        error.message === "Invalid password"
+        error.message === "Usuário não encontrado" ||
+        error.message === "Senha incorreta"
       ) {
         res.status(400).json({ message: error.message });
       } else {
