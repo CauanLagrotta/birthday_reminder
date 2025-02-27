@@ -28,7 +28,6 @@ export function Header() {
   const handleLogout = () => {
     api.get("/auth/logout").then(() => {
       setAuth(false);
-      location.reload();
     });
   };
 

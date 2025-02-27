@@ -11,8 +11,8 @@ export const loginController: RequestHandler = async (req, res) => {
     // Add the token to the response cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "development",
-      sameSite: "strict",
+      secure: false, // Set to true if using HTTPS
+      sameSite: "lax",
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     });
 
