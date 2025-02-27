@@ -15,7 +15,7 @@ export const createUserService = async (
   });
 
   if (existingUser) {
-    throw new Error("User already exists");
+    throw new Error("Nome ou e-mail já cadastrados");
   }
 
   const hashedPassword = await bcrypt.hash(password, saltRounds);

@@ -21,6 +21,6 @@
     [o] - Create Logout
     [o] - Create forgot/reset password
 
-[] - Create I'm not robot system
-    [] - Create a filter with gemini
+[x] - Create I'm not robot system
+    [o] - Create a filter with gemini
     
