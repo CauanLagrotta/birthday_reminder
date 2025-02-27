@@ -1,7 +1,9 @@
 import logo from "/assets/logo.png";
 import { Link } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-//import { api } from "../api"
+import { useEffect, useState } from "react";
+import { api } from "../api";
+import Logout from "@mui/icons-material/Logout";
 
 interface NavLinkProps {
   to: string;
@@ -9,6 +11,27 @@ interface NavLinkProps {
 }
 
 export function Header() {
+  const [auth, setAuth] = useState(false);
+
+  useEffect(() => {
+    api
+      .get("/auth/header", { withCredentials: true })
+      .then(() => {
+        setAuth(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        setAuth(false);
+      });
+  }, []);
+
+  const handleLogout = () => {
+    api.get("/auth/logout").then(() => {
+      setAuth(false);
+      location.reload();
+    });
+  };
+
   return (
     <div className="flex justify-between items-center p-4 bg-[#fff]">
       <Link to="/home">
@@ -16,14 +39,28 @@ export function Header() {
       </Link>
 
       <div className="flex items-center gap-6">
-        <NavLink to="/home">Início</NavLink>
-        <NavLink to="/about">Sobre | Como usar</NavLink>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/register">Registrar-se</NavLink>
-        <AccountCircleIcon
-          sx={{ fontSize: 30 }}
-          className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer"
-        />
+        {auth ? (
+          <>
+            <NavLink to="/home">Início</NavLink>
+            <NavLink to="/about">Sobre | Como usar</NavLink>
+            <AccountCircleIcon
+              sx={{ fontSize: 30 }}
+              className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer"
+            />
+            <Logout
+              sx={{ fontSize: 30 }}
+              className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer"
+              onClick={handleLogout}
+            />
+          </>
+        ) : (
+          <>
+            <NavLink to="/home">Início</NavLink>
+            <NavLink to="/about">Sobre | Como usar</NavLink>
+            <NavLink to="/login">Login</NavLink>
+            <Link to="/register" className="">Registrar-se</Link>
+          </>
+        )}
       </div>
     </div>
   );

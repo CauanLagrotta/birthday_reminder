@@ -10,10 +10,23 @@ export class ResetPasswordController{
         try{
             const token = generateResetToken(email, id);
             const resetLink = `${process.env.FRONTEND_URL}/${id}/${token}`;
+
             return res.status(200).json({ resetLink });
 
         }catch(error){
             return res.status(500).json({ error: error});
+        }
+    }
+
+    async resetPassword(req: express.Request, res: express.Response): Promise<express.Response> {
+        const { id, token } = req.params;
+        const { newPassword } = req.body;
+        
+        try{
+            await resetPasswordService(id, token, newPassword);
+            return res.status(200).json({ message: "Password reset successfully" });
+        }catch(error){
+            return res.status(500).json({ error: error });
         }
     }
 }
