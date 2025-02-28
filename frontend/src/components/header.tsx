@@ -57,7 +57,13 @@ export function Header() {
             <NavLink to="/home">Início</NavLink>
             <NavLink to="/about">Sobre | Como usar</NavLink>
             <NavLink to="/login">Login</NavLink>
-            <Link to="/register" className="">Registrar-se</Link>
+
+            <Link
+              to="/register"
+              className="bg-[#51446F] border border-[#51446F] text-white py-2 px-4 rounded-4xl hover:bg-[#fff] hover:text-[#51446F] transition duration-300 ease-in-out"
+            >
+              Registrar-se
+            </Link>
           </>
         )}
       </div>
