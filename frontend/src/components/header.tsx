@@ -4,6 +4,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useEffect, useState } from "react";
 import { api } from "../api";
 import Logout from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
 
 interface NavLinkProps {
   to: string;
@@ -12,6 +13,8 @@ interface NavLinkProps {
 
 export function Header() {
   const [auth, setAuth] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     api
@@ -28,6 +31,7 @@ export function Header() {
   const handleLogout = () => {
     api.get("/auth/logout").then(() => {
       setAuth(false);
+      navigate("/home");
     });
   };
 
@@ -42,10 +46,13 @@ export function Header() {
           <>
             <NavLink to="/home">Início</NavLink>
             <NavLink to="/about">Sobre | Como usar</NavLink>
-            <AccountCircleIcon
-              sx={{ fontSize: 30 }}
-              className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer"
-            />
+            <Link to="/profile">
+              <AccountCircleIcon
+                sx={{ fontSize: 30 }}
+                className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer"
+              />
+            </Link>
+
             <Logout
               sx={{ fontSize: 30 }}
               className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer"

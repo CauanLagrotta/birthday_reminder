@@ -6,6 +6,7 @@ import { Register } from "../pages/register";
 import { ResetPassword } from "../pages/reset-password";
 import { ForgotPassword } from "../pages/forgot-password";
 import { About } from "../pages/about";
+import { Profile } from "../pages/profile";
 
 export function Router(){
     return(
@@ -13,6 +14,7 @@ export function Router(){
             <Route path="/" element={<ProveYoureHuman />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/reset-password" element={<ResetPassword />} />
