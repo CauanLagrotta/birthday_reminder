@@ -1,6 +1,6 @@
 import { proveYoureHumanService } from "../../services/prove_youre_human/prove_youre_human.service";
 
-export const proveYoureHumanController = async (req: any, res: any) => {
+export const proveYoureHumanController = async (req, res) => {
     const { user_response } = req.body;
 
     try {

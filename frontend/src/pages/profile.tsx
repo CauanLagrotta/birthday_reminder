@@ -11,7 +11,6 @@ interface User {
 
 export function Profile() {
   const [values, setValues] = useState<User | null>(null);
-
   const navigate = useNavigate();
 
   const fetchUser = async () => {
@@ -19,20 +18,21 @@ export function Profile() {
       const response = await api.get("/auth/profile");
       setValues(response.data.user);
     } catch (error) {
-      console.log(error);
+      console.error("Erro ao buscar os dados do usuário:", error);
     }
   };
 
-  const handleEdit = () => {
+  const handleEdit = async () => {
     if (values) {
-      api
-        .put(`/users/${values.id}`, {
+      try {
+        await api.put(`/users/${values.id}`, {
           name: values.name,
           email: values.email,
-        })
-        .then(() => {
-          setTimeout(() => navigate("/home"), 1000);
         });
+        navigate("/home");
+      } catch (error) {
+        console.error("Erro ao atualizar os dados do usuário:", error);
+      }
     }
   };
 
@@ -48,40 +48,49 @@ export function Profile() {
   }, []);
 
   return (
-    <div className="bg-[#f2f2f2] h-screen">
+    <div className="bg-gray-100 min-h-screen">
       <Header />
-
-      <h1 className="text-3xl text-blue-500">Profile</h1>
-
-      <label
-        htmlFor="name"
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >
-        Nome
-      </label>
-      <input
-        type="text"
-        value={values?.name || ""}
-        placeholder="Digite seu nome..."
-        name="name"
-        onChange={handleChange}
-      />
-
-      <label
-        htmlFor="email"
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-      >
-        Email
-      </label>
-      <input
-        type="email"
-        value={values?.email || ""}
-        placeholder="Digite seu email..."
-        name="email"
-        onChange={handleChange}
-      />
-
-      <button onClick={handleEdit}>Salvar</button>
+      <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+        <h1 className="text-2xl font-semibold text-gray-700 mb-6">Perfil</h1>
+        <div className="mb-4">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
+            Nome
+          </label>
+          <input
+            type="text"
+            name="name"
+            value={values?.name || ""}
+            onChange={handleChange}
+            placeholder="Digite seu nome..."
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div className="mb-6">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700 mb-2"
+          >
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={values?.email || ""}
+            onChange={handleChange}
+            placeholder="Digite seu email..."
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <button
+          onClick={handleEdit}
+          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
+        >
+          Salvar
+        </button>
+      </div>
     </div>
   );
 }
