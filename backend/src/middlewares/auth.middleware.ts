@@ -46,6 +46,6 @@ export const authMiddleware = async (
   }
 };
 
-export const verifyUser = async (req: Request, res: Response): Promise<void> => {
-    res.status(200).json({ message: "User Authenticated", user: req.user });
+export const verifyUser = (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).json({ message: "User verified" });
 }

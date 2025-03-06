@@ -44,7 +44,7 @@ export function Login() {
           position: "bottom-left",
         });
         resetForm();
-        setTimeout(() => navigate("/home"), 1000);
+        setTimeout(() => navigate("/birthday-register"), 1000);
       })
       .catch((error) => {
         const errorMsg =

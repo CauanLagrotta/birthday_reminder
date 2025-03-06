@@ -13,9 +13,7 @@ export const createBirthdayService = async (
       day,
       month,
       user: {
-        connect: {
-          id: userId,
-        },
+        connect: { id: userId }
       },
     },
     include: {

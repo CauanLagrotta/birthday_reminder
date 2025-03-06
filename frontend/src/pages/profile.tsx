@@ -29,7 +29,7 @@ export function Profile() {
           name: values.name,
           email: values.email,
         });
-        navigate("/home");
+        navigate("/birthday-register");
       } catch (error) {
         console.error("Erro ao atualizar os dados do usuário:", error);
       }
@@ -48,7 +48,7 @@ export function Profile() {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-[#f2f2f2] min-h-screen">
       <Header />
       <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl font-semibold text-gray-700 mb-6">Perfil</h1>

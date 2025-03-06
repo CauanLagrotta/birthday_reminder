@@ -34,7 +34,7 @@ export function ProveYoureHuman() {
       } else if (result === "ELOGIO") {
         setBobImg(bobHappy);
         setMessage("Bob gostou da sua resposta. 😊");
-        setTimeout(() => navigate("/home"), 1000);
+        setTimeout(() => navigate("/about"), 1000);
       } else {
         setBobImg(bobNeutral);
         setMessage("Bob ficou confuso com sua resposta. 😕");
@@ -57,7 +57,7 @@ export function ProveYoureHuman() {
         <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
           <button
             className="absolute top-4 left-4 text-blue-500 hover:underline"
-            onClick={() => navigate("/home")}
+            onClick={() => navigate("/about")}
           >
             Pular esta etapa
           </button>

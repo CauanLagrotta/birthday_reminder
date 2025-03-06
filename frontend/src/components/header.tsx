@@ -35,29 +35,42 @@ export function Header() {
   const handleLogout = () => {
     api.get("/auth/logout").then(() => {
       setAuth(false);
-      navigate("/home");
+      navigate("/about");
     });
   };
 
   return (
-    <div className="flex justify-between items-center p-4 bg-white relative">
-      <Link to="/home">
+    <div className="flex justify-between items-center p-4 bg-white relative shadow-xl">
+      <Link to="/birthday-register">
         <img src={logo} alt="logo" className="w-[80px] h-auto" />
       </Link>
 
       <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? <CloseIcon fontSize="large" /> : <MenuIcon fontSize="large" />}
+        {menuOpen ? (
+          <CloseIcon fontSize="large" />
+        ) : (
+          <MenuIcon fontSize="large" />
+        )}
       </button>
 
       <div
-        className={`fixed top-0 left-0 h-full w-1/2 bg-white shadow-lg transform ${menuOpen ? "translate-x-0" : "-translate-x-full"} transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-6 md:static md:w-auto md:bg-transparent md:shadow-none md:translate-x-0 md:flex-row md:items-center`}
+        className={`fixed top-0 left-0 h-full w-1/2 bg-white shadow-lg transform ${
+          menuOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out flex flex-col items-center justify-center gap-6 md:static md:w-auto md:bg-transparent md:shadow-none md:translate-x-0 md:flex-row md:items-center`}
       >
-        <NavLink to="/home" onClick={() => setMenuOpen(false)}>Início</NavLink>
-        <NavLink to="/about" onClick={() => setMenuOpen(false)}>Sobre | Como usar</NavLink>
+        <NavLink to="/about" onClick={() => setMenuOpen(false)}>
+          Sobre | Como usar
+        </NavLink>
         {auth ? (
           <>
+            <NavLink to="/birthday-register" onClick={() => setMenuOpen(false)}>
+              Adicionar aniversariante
+            </NavLink>
             <Link to="/profile" onClick={() => setMenuOpen(false)}>
-              <AccountCircleIcon sx={{ fontSize: 30 }} className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer" />
+              <AccountCircleIcon
+                sx={{ fontSize: 30 }}
+                className="text-[#51446F] hover:text-blue-500 duration-300 ease-in-out cursor-pointer"
+              />
             </Link>
             <Logout
               sx={{ fontSize: 30 }}
@@ -67,7 +80,9 @@ export function Header() {
           </>
         ) : (
           <>
-            <NavLink to="/login" onClick={() => setMenuOpen(false)}>Login</NavLink>
+            <NavLink to="/login" onClick={() => setMenuOpen(false)}>
+              Login
+            </NavLink>
             <Link
               to="/register"
               className="bg-[#51446F] border border-[#51446F] text-white py-2 px-4 rounded-4xl hover:bg-[#fff] hover:text-[#51446F] transition duration-300 ease-in-out"
