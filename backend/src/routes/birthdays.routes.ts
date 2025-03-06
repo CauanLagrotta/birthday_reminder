@@ -6,7 +6,7 @@ import { deleteBirthdayController } from "../controllers/birthday/delete_birthda
 
 export const birthday_routes = Router();
 
-birthday_routes.post("/", createBirthdayController); // http://localhost:3000/birthdays
+birthday_routes.post("/:id", createBirthdayController); // http://localhost:3000/birthdays/:id
 birthday_routes.get("/", seeBirthdayController); // http://localhost:3000/birthday
 birthday_routes.put("/:id", editBirthdayController); // http://localhost:3000/birthday/:id
 birthday_routes.delete("/:id", deleteBirthdayController); // http://localhost:3000/birthday/:id
