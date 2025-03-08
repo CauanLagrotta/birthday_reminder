@@ -3,7 +3,8 @@ import { RequestHandler } from "express";
 
 export const seeBirthdayController: RequestHandler = async (req, res) => {
   try {
-    const birthdays = await seeBirthdayService();
+    const { userId } = req.params;
+    const birthdays = await seeBirthdayService(userId);
     res.status(200).json(birthdays);
     
   } catch (error) {

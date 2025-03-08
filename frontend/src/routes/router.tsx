@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { BirthdayRegister } from "../pages/birthday-register";
+import { GetBirthdays } from "../pages/get-birthdays";
 import { ProveYoureHuman } from "../pages/prove_youre_human";
 import { Login } from "../pages/login";
 import { Register } from "../pages/register";
@@ -13,6 +14,7 @@ export function Router(){
         <Routes>
             <Route path="/" element={<ProveYoureHuman />} />
             <Route path="/birthday-register" element={<BirthdayRegister />} />
+            <Route path="/get-birthdays" element={<GetBirthdays />} />
             <Route path="/about" element={<About />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />

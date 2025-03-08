@@ -66,6 +66,9 @@ export function Header() {
             <NavLink to="/birthday-register" onClick={() => setMenuOpen(false)}>
               Adicionar aniversariante
             </NavLink>
+            <NavLink to="/get-birthdays" onClick={() => setMenuOpen(false)}>
+              Ver aniversariantes
+            </NavLink>
             <Link to="/profile" onClick={() => setMenuOpen(false)}>
               <AccountCircleIcon
                 sx={{ fontSize: 30 }}
