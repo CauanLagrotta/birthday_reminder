@@ -7,6 +7,7 @@ import {
   } from 'react'
   import { api } from '../api'
   import { toast } from 'react-toastify'
+  import { useNavigate } from 'react-router-dom'
   
   interface UserProps {
     id: string
@@ -27,6 +28,8 @@ import {
   
   export function AuthContextProvider({ children }: AuthContextProviderProps) {
     const [user, setUser] = useState({} as UserProps)
+
+    const navigate = useNavigate()
   
     async function login(email: string, password: string) {
       api
@@ -43,6 +46,8 @@ import {
           toast.success('Usuário logado com sucesso!', {
             position: 'bottom-left',
           })
+
+          setTimeout(() => navigate('/birthday-register'), 1000)
         })
         .catch((error) => {
           const errorMsg =
@@ -53,6 +58,10 @@ import {
           toast.error(errorMsg, {
             position: 'bottom-left',
           })
+
+          if(errorMsg === "Usuário não encontrado"){
+            setTimeout(() => navigate('/register'), 1000)
+          }
         })
     }
   

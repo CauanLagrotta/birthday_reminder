@@ -1,0 +1,28 @@
+services:
+  database:
+    image: postgres
+    container_name: birthday_reminder
+    ports:
+      - 5432:5432
+
+    environment:
+      - POSTGRES_USER=reminder
+      - POSTGRES_PASSWORD=reminder
+      - POSTGRES_DB=birth-reminder
+
+    volumes:
+      - rem-volume:/var/lib/postgresql/data
+
+volumes:
+  rem-volume:
+    name: rem-volume
+
+#docker run --name crud-postgresql -e POSTGRESQL_USERNAME=postgres -e POSTGRESQL_PASSWORD=postgres -e POSTGRESQL_DATABASE=crud -p 5432:5432 bitnami/postgresql
+
+# docker compose up -d | para criar o container
+# docker compose down | para deletar o container
+# docker compose stop | para parar o container
+# docker ps | para ver os containers criados rodando
+# docker ps -a | para ver os containers criados
+# docker start <names> | para iniciar o container
+# docker stop <names> | para parar o container

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import Visibility from '@mui/icons-material/Visibility'
@@ -22,8 +22,6 @@ export function Login() {
   const { login } = useAuth()
   const [showPassword, setShowPassword] = useState(false)
 
-  const navigate = useNavigate()
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
@@ -33,12 +31,9 @@ export function Login() {
       email: string
       password: string
     },
-    { resetForm }: { resetForm: () => void }
   ) => {
     try {
       login(values.email, values.password)
-      resetForm()
-      setTimeout(() => navigate('/birthday-register'), 1000)
     } catch (error) {
       console.error('Erro ao fazer login:', error)
     }
