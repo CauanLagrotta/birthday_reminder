@@ -9,4 +9,4 @@ export const birthday_routes = Router();
 birthday_routes.post("/:id", createBirthdayController); // http://localhost:3000/birthdays/:id
 birthday_routes.get("/:userId", seeBirthdayController); // http://localhost:3000/birthdays/:userId
 birthday_routes.put("/:id", editBirthdayController); // http://localhost:3000/birthday/:id
-birthday_routes.delete("/:id", deleteBirthdayController); // http://localhost:3000/birthday/:id
+birthday_routes.delete("/:id", deleteBirthdayController); // http://localhost:3000/birthdays/:id

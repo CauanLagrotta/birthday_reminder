@@ -3,7 +3,9 @@ import { api } from "../api";
 import { useAuth } from "../hooks/context";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "react-toastify/dist/ReactToastify.css";
+import Swal from "sweetalert2";
 
 interface IBirthday {
   id: number;
@@ -35,6 +37,28 @@ export function GetBirthdays() {
     }
   };
 
+  const handleDeleteBirthday = async (id: number) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+    if (result.isConfirmed) {
+      await api.delete(`/birthdays/${id}`, { withCredentials: true });
+      await Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+
+      await handleGetBirthdays();
+    }
+  };
+
   useEffect(() => {
     if (user?.id) {
       handleGetBirthdays();
@@ -56,15 +80,21 @@ export function GetBirthdays() {
               birthdays.map((birthday) => (
                 <div
                   key={birthday.id}
-                  className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center justify-center transition-transform transform hover:scale-105"
+                  className="bg-[#51446F] shadow-md rounded-lg p-6 flex flex-col items-center justify-center transition-transform transform cursor-pointer"
                 >
-                  <h2 className="text-xl font-semibold text-gray-800">
+                  <h2 className="text-xl font-semibold text-[#fff]">
                     {birthday.birthday_person}
                   </h2>
-                  <p className="text-gray-600 text-sm mt-2">
+                  <p className="text-[#fff] text-sm mt-2">
                     {String(birthday.day).padStart(2, "0")}/
                     {String(birthday.month).padStart(2, "0")}
                   </p>
+
+                  <DeleteIcon
+                    className="absolute top-2 right-2 cursor-pointer"
+                    sx={{ color: "#ff0000" }}
+                    onClick={() => handleDeleteBirthday(birthday.id)}
+                  />
                 </div>
               ))
             ) : (
