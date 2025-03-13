@@ -25,6 +25,11 @@ export const resetPasswordService = async (
 ): Promise<void> => {
   const secret = process.env.TOKEN as string;
 
+  console.log("Recebendo token:", token); 
+  console.log("Esperando o token da env:", process.env.TOKEN);
+  
+
+
   if (!secret) {
     throw new Error("Token secret not found");
   }

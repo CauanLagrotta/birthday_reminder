@@ -19,7 +19,7 @@ export function Router(){
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/auth/reset-password/:id/:token" element={<ResetPassword />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
     )

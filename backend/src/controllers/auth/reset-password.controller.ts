@@ -20,12 +20,13 @@ export class ResetPasswordController{
 
     async resetPassword(req: express.Request, res: express.Response): Promise<express.Response> {
         const { id, token } = req.params;
-        const { newPassword } = req.body;
+        const { password } = req.body;
         
         try{
-            await resetPasswordService(id, token, newPassword);
+            await resetPasswordService(id, token, password);
             return res.status(200).json({ message: "Password reset successfully" });
         }catch(error){
+            console.log(error);
             return res.status(500).json({ error: error });
         }
     }
