@@ -69,10 +69,10 @@ export function GetBirthdays() {
     <div>
       <Header />
 
-      <div className="min-h-screen flex flex-col items-center">
-        <main className="w-full max-w-4xl px-4 py-8 text-center">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6">
-            Aniversariantes
+      <div className="bg-gray-100 min-h-screen flex flex-col items-center">
+        <main className="w-full max-w-4xl px-6 py-10 text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-8">
+            🎉 Aniversariantes
           </h1>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -80,32 +80,33 @@ export function GetBirthdays() {
               birthdays.map((birthday) => (
                 <div
                   key={birthday.id}
-                  className="bg-[#51446F] shadow-md rounded-lg p-6 flex flex-col items-center justify-center transition-transform transform cursor-pointer"
+                  className="relative bg-[#6B5B95] shadow-lg rounded-lg p-6 flex flex-col items-center justify-center transition-all transform hover:scale-105"
                 >
-                  <h2 className="text-xl font-semibold text-[#fff]">
+                  <h2 className="text-2xl font-semibold text-white">
                     {birthday.birthday_person}
                   </h2>
-                  <p className="text-[#fff] text-sm mt-2">
+                  <p className="text-white text-sm mt-2">
                     {String(birthday.day).padStart(2, "0")}/
                     {String(birthday.month).padStart(2, "0")}
                   </p>
 
-                  <DeleteIcon
-                    className="absolute top-2 right-2 cursor-pointer"
-                    sx={{ color: "#ff0000" }}
+                  <button
+                    className="absolute top-2 right-2 bg-red-600 p-1 rounded-full hover:bg-red-700 transition"
                     onClick={() => handleDeleteBirthday(birthday.id)}
-                  />
+                  >
+                    <DeleteIcon sx={{ color: "#fff" }} className="cursor-pointer"/>
+                  </button>
                 </div>
               ))
             ) : (
               <p className="text-gray-600 text-lg">
-                Nenhum aniversário encontrado.
+                Nenhum aniversário encontrado. 🧐
               </p>
             )}
           </div>
         </main>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </div>
   );
 }
