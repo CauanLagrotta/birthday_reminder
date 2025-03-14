@@ -2,7 +2,7 @@ import { Header } from "../components/header";
 import { api } from "../api";
 import { useAuth } from "../hooks/context";
 import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
@@ -28,30 +28,25 @@ export function GetBirthdays() {
       });
       setBirthdays(response.data || []);
     } catch (error) {
-      toast.error(
-        "Erro ao buscar aniversariantes. Tente novamente mais tarde",
-        {
-          position: "top-right",
-        }
-      );
+      console.log(error);
     }
   };
 
   const handleDeleteBirthday = async (id: number) => {
     const result = await Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      title: "Tem certeza que quer deletar?",
+      text: "Não será possivel reverter!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Sim, quero deletar!",
     });
     if (result.isConfirmed) {
       await api.delete(`/birthdays/${id}`, { withCredentials: true });
       await Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
+        title: "Deletado!",
+        text: "O aniversariante foi deletado.",
         icon: "success",
       });
 
