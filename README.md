@@ -31,7 +31,7 @@ Um sistema inteligente para nunca esquecer aniversários importantes! Com lembre
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?logo=tailwind-css)
 ![Axios](https://img.shields.io/badge/-Axios-5A29E4?logo=axios)
-![Formik](https://img.shields.io/badge/docker-257bd6?style=for-the-badge&logo=docker&logoColor=white)
+![Formik](https://img.shields.io/badge/formik-257bd6?style=for-the-badge&logo=formik&logoColor=white)
 
 ## 🚀 Instalação
 
