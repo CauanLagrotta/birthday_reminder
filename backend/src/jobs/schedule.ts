@@ -1,7 +1,7 @@
 import cron from "node-cron";
 import { mailReminderTransporterService } from "../services/mail_reminder/mail_reminder_transporter.service";
 
-// Schedule a job to run every day at 08:00 AM
+// Rodando todos os dias 8 da manha
 cron.schedule(
   "0 8 * * *",
   async () => {

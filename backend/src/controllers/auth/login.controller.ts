@@ -8,12 +8,12 @@ export const loginController: RequestHandler = async (req, res) => {
     const { email, password } = req.body;
     const { token, user } = await loginService(email, password);
 
-    // Add the token to the response cookie
+    // adicionando o token ao cookie
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // Set to true if using HTTPS
+      secure: false, // trocar para true em producao
       sameSite: "lax",
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
+      maxAge: 1000 * 60 * 60 * 24, // 1 dia
     });
 
     res.status(200).json({ message: "Login successful", token, user });
